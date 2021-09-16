@@ -1,0 +1,34 @@
+.NavBar {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+.NavBar .Logo {
+    display: flex;
+    align-items: center;
+}
+.NavBar ul {
+    list-style: none;
+    display: flex;
+}
+.NavBar ul li {
+    margin: 0px 20px;
+}
+
+.NavBar ul li a {
+    color: #aaa;
+}
+.NavBar ul li:hover a {
+    color: #555;
+}
+.NavBar ul li.active a {
+    color: #000;
+}
+.NavBar .LogIn {
+    padding: 5px 10px;
+    background-color: #000;
+    color: #fff;
+}

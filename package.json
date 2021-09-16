@@ -1,0 +1,37 @@
+{
+    "name": "farmpay",
+    "version": "1.0.0",
+    "description": "farm loan assistant",
+    "main": "server.js",
+    "scripts": {
+        "client-install": "npm install --prefix client",
+        "server": "node server.js",
+        "client": "npm start --prefix client",
+        "start": "node server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
+    "author": "BAHRI Mekki",
+    "license": "ISC",
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.36",
+        "@fortawesome/free-solid-svg-icons": "^5.15.4",
+        "@fortawesome/react-fontawesome": "^0.1.15",
+        "bcrypt": "^5.0.1",
+        "concurrently": "^6.2.1",
+        "dateformat": "^4.5.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.12.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.0.6",
+        "nodemailer": "^6.6.3",
+        "recharts": "^2.1.2",
+        "serve": "^12.0.1",
+        "validator": "^13.6.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
+}
