@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "farm loan assistant",
     "main": "server.js",
+    "engines": {
+        "npm": "7.20.1",
+        "node": "15.11.0"
+    },
     "scripts": {
         "client-install": "npm install --prefix client",
         "server": "node server.js",
