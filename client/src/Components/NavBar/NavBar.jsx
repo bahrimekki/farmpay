@@ -8,19 +8,19 @@ function NavBar() {
             </div>
             <ul className="list">
                 <li className="active">
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="#">Features</a>
+                    <a href="/">Features</a>
                 </li>
                 <li>
-                    <a href="#">About Us</a>
+                    <a href="/">About Us</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/">Contact</a>
                 </li>
             </ul>
-            <a href="#" className="LogIn">
+            <a href="/" className="LogIn">
                 Login
             </a>
         </div>

@@ -32,7 +32,7 @@ function LandPage() {
                         Flexible repayment model
                     </li>
                 </ul>
-                <a href="#" className="bottom">
+                <a href="/" className="bottom">
                     Get started
                 </a>
             </div>

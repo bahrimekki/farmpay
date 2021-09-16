@@ -13,7 +13,7 @@
         "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
     "author": "BAHRI Mekki",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
