@@ -1,4 +1,4 @@
-const Loan = require("../models/Loan");
+const Loan = require("../models/LoanModel");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const nodemailer = require("nodemailer");

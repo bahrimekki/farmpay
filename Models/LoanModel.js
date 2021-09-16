@@ -10,4 +10,4 @@ const loanSchema = new schema({
     amount: { type: Number },
     period: { type: Number },
 });
-module.exports = mongoos.model("Loan", loanSchema);
+module.exports = mongoos.model("LoanModel", loanSchema);

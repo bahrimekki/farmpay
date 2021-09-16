@@ -3,8 +3,8 @@ const app = express();
 const path = require("path");
 
 const connectDB = require("./config/connectDB");
-const userRouter = require("./routes/user");
-const loanRouter = require("./routes/loan");
+const userRouter = require("./routes/userroute");
+const loanRouter = require("./routes/loanroute");
 
 app.use(express.json());
 connectDB();

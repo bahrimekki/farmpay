@@ -7,4 +7,4 @@ const userSchema = new schema({
     isVerified: { type: Boolean },
     password: { type: String },
 });
-module.exports = mongoos.model("User", userSchema);
+module.exports = mongoos.model("UserModel", userSchema);
