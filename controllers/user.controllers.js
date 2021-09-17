@@ -3,6 +3,17 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const nodemailer = require("nodemailer");
 var jwt = require("jsonwebtoken");
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+
+const oauth2Client = new OAuth2(
+    process.env.CLIENT_ID, // ClientID
+    process.env.CLIENT_SECRET, // Client Secret
+    process.env.REDIRECT_URL // Redirect URL
+);
+oauth2Client.setCredentials({
+    refresh_token: process.env.REFRECH_TOKEN,
+});
 
 exports.SignUp = async (req, res) => {
     try {
@@ -23,23 +34,36 @@ exports.SignUp = async (req, res) => {
         const hashedpassword = await bcrypt.hash(password, saltRounds);
         newUser.password = hashedpassword;
 
+        const accessToken = await oauth2Client.getAccessToken();
         const transporter = nodemailer.createTransport({
-            host: process.env.HOST_NODEMAILER,
-            port: process.env.PORT_NODEMAILER,
-            secure: false, // true for 465, false for other ports
+            service: "gmail",
             auth: {
-                user: process.env.USER_NODEMAILER, // generated ethereal user
-                pass: process.env.PASS_NODEMAILER, // generated ethereal password
+                type: "OAuth2",
+                user: process.env.USER_NODEMAILER,
+                clientId: process.env.CLIENT_ID,
+                clientSecret: process.env.CLIENT_SECRET,
+                refreshToken: process.env.REFRECH_TOKEN,
+                accessToken: accessToken,
             },
         });
+
+        // const transporter = nodemailer.createTransport({
+        //     host: process.env.HOST_NODEMAILER,
+        //     port: process.env.PORT_NODEMAILER,
+        //     secure: false, // true for 465, false for other ports
+        //     auth: {
+        //         user: process.env.USER_NODEMAILER, // generated ethereal user
+        //         pass: process.env.PASS_NODEMAILER, // generated ethereal password
+        //     },
+        // });
         const msg = {
             from: process.env.USER_NODEMAILER,
             to: req.body.email,
             subject: "FarmPay - verify your E-mail",
             text: `Hello, thanks for registering in our App.
             Please visite this lien to verify your account.
-            http://localhost:5000/api/users/verify-email?token=${emailToken}`,
-            html: `<a href="http://localhost:5000/api/users/verify-email?token=${emailToken}">verify your account</a>`,
+            https://farmpaytest.herokuapp.com/api/users/verify-email?token=${emailToken}`,
+            html: `<a href="https://farmpaytest.herokuapp.com/api/users/verify-email?token=${emailToken}">verify your account</a>`,
         };
         await newUser.save();
         await transporter.sendMail(msg);
